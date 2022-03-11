@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #card_container {
+
+            display: flex;
+            align-items: center;
+            flex-flow: row;
+            /* https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Aligning_Items_in_a_Flex_Container */
+            justify-content: space-between;
+           
+            background-color: white;
+            border: 1px solid white;
+            border-radius: 10px;
+            padding: 5px;
+
+
+        }
+
+        .outer_div {
+            width: 200px;
+            height: 300px;
+            background: #3D7EAA;
+            /* fallback for old browsers */
+            background: -webkit-linear-gradient(to left, #ca195d, #3D7EAA);
+            /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to left, #FFE47A, #3D7EAA);
+            /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+            border-radius: 10px;
+            box-sizing: border-box;
+            /* https://www.w3schools.com/css/css3_box-sizing.asp */
+            display: inline-block;
+            overflow-x: auto;
+
+        }
+
+        .scrols {
+            height: 30px;
+            width: 30px;
+            background-color: white;
+            border-radius: 50%;
+        }
+        img{
+             width: 100%;
+             height:100%;
+             /* margin-top:-10px; */
+             /* margin-left:auto; */
+        }
+
+        @media only screen and (max-width: 600px) {
+            #card_container {
+                background-color: lightblue;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+            }
+/* .outer_div{
+    width: 200px;
+            height: 300px;
+} */
+            .scrol_button {
+                display: none;
+            }
+        }
+
+        .scrols:hover {
+            width: 40px;
+            height: 40px;
+        }
+        /* #hide_4{
+            display: none;
+        } */
+        .image_portion{
+            width: 100%;height:70%;
+            box-sizing: border-box;
+            background-color:white;
+        }
+    </style>
+</head>
+
+<body onload=" hideExtraCard()" >
+    <div id="card_container">
+        <div id="left_scrol" class="scrol_button">
+            <img  id="left_scrol" class="scrols" src="images/circle-arrow-left-solid.png" alt="" onclick="leftcards()">
+        </div>
+        <div class="outer_div">
+            <div class="image_portion">
+                <img src="images/1633668733915.jpg" alt="">
+            </div>
+            <div class="discription"></div>
+        </div>
+        <div class="outer_div" id="hide_4">
+            <div class="image_portion">
+                <img src="images/bimalselfie.jpeg" alt="">
+            </div>
+            <div class="discription"></div>
+        </div>
+        <div class="outer_div" id="hide_4">
+            <div class="image_portion">
+                <img  src="images/COLOR_POP.jpg" alt="">
+            </div>
+            <div class="discription"></div>
+        </div>
+        <div class="outer_div" id="hide_4">
+            <div class="image_portion">
+                <img  src="images/bimal1.jpeg" alt="">
+            </div>
+            <div class="discription"></div>
+        </div>
+        <div class="outer_div" id="hide_4">
+            <div class="image_portion">
+                <img  src="images/bimal2.jpeg" alt="">
+            </div>
+            <div class="discription"></div>
+        </div>
+        <div class="outer_div" id="hide_4">
+            <div class="image_portion">
+                <img  src="images/bimal3.jpeg" alt="">
+            </div>
+            <div class="discription"></div>
+        </div>
+
+        <div id="right_scrol" class="scrol_button">
+            <img  id="right_scrol" class="scrols" src="images/circle-arrow-right-solid.png" alt="fdfdf" onclick="rightcards()">
+        </div>
+    </div>
+
+    <script>
+        let container;
+//onloading function
+        function hideExtraCard()
+        {  // console.log(window.innerWidth);
+            container=document.getElementById("card_container");
+             if(window.innerWidth>600)
+           {  let N=container.children.length-1;
+              for(let i=5;i<N;i++)
+              {
+                 container.children[i].style.display="none";
+              }
+        
+            }
+        }
+
+
+//function for right click
+        function rightcards()
+        {
+           //container=event.target.parentNode.parentNode;
+        //   container[0].style.display="none";
+        let N=container.children.length-1;
+        let i=1;
+        for( i=1;container.children[i].style.display==="none";i++);
+        if((i+4)<N){
+           container.children[i].style.display="none";
+        
+         container.children[i+4].style.display="inline";
+        }
+
+        //console.log(container.children[1].innerText);
+        //console.log(container.children.length-2);
+        }
+       
+
+
+      //for left side click
+
+        function leftcards(){
+            let N=container.children.length-1;
+
+            let i=N-1;
+        for( ;container.children[i].style.display==="none";i--);
+        if((i-4)>0){
+           container.children[i].style.display="none";
+        
+         container.children[i-4].style.display="inline";
+        }
+        }
+    </script>
+</body>
+
+</html>
